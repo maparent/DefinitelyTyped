@@ -722,7 +722,7 @@ declare module D3 {
 
         filter: {
             (filter: (data: any, index: number) => boolean, thisArg?: any): UpdateSelection;
-            //(filter: string): UpdateSelection;
+            (filter: string): UpdateSelection;
         };
 
         call(callback: (selection: Selection) => void ): Selection;
@@ -740,7 +740,8 @@ declare module D3 {
         */
         sort<T>(comparator?: (a: T, b: T) => number): Selection;
         order: () => Selection;
-        node: () => SVGLocatable;
+        node: () => Element;
+        empty: () => boolean;
     }
 
     export interface EnterSelection {
@@ -748,7 +749,7 @@ declare module D3 {
         insert: (name: string, before: string) => Selection;
         select: (selector: string) => Selection;
         empty: () => boolean;
-        node: () => SVGLocatable;
+        node: () => Element;
     }
 
     export interface UpdateSelection extends Selection {
@@ -784,7 +785,7 @@ declare module D3 {
 
     export interface Set{
         has(value: any): boolean;
-        Add(value: any): any;
+        add(value: any): any;
         remove(value: any): boolean;
         values(): Array<any>;
         forEach(func: (value: any) => void ): void;
